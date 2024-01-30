@@ -58,4 +58,12 @@ describe('team iterator', () => {
 
     expect(teamSecond.size).toBe(0);
   });
+
+  test('iterator', () => {
+    let cnt = 0;
+    for (let character of team) {
+      expect(character).toEqual(arrayFromTeam[cnt]);
+      cnt++;
+    }
+  });
 });
