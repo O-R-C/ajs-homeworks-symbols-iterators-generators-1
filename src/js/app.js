@@ -2,5 +2,9 @@ import Team from './Classes/Team';
 import characters from './data';
 
 const team = new Team();
-team.add(characters[0]);
+team.addAll(characters);
+
+for (let character of team) {
+  console.log(character);
+}
 

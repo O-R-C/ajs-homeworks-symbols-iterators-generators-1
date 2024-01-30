@@ -36,4 +36,21 @@ export default class Team {
   toArray() {
     return [...this.members];
   }
+
+  /**
+   * реализует перебор this.members
+   * @iterator
+   * @returns персонажей, по одному в порядке добавления в команду
+   */
+  [Symbol.iterator]() {
+    const members = this.members.keys();
+
+    return {
+      next() {
+        const value = members.next().value;
+
+        return value ? { done: false, value } : { done: true };
+      },
+    };
+  }
 }

@@ -19,10 +19,9 @@ describe('test Team.add', () => {
 
 describe('test Team.addAll', () => {
   const team = new Team();
+  team.addAll(characters);
 
   test('correct addAll', () => {
-    team.addAll(characters);
-
     expect(team.members.size).toBe(characters.length);
   });
 
@@ -41,5 +40,22 @@ describe('test Team.toArray', () => {
     const arr = team.toArray();
 
     expect(Array.isArray(arr)).toBeTruthy();
+  });
+});
+
+describe('team iterator', () => {
+  const team = new Team();
+  team.addAll(characters);
+  const arrayFromTeam = team.toArray();
+
+  test('size === length', () => {
+    expect(team.members.size).toBe(arrayFromTeam.length);
+  });
+
+  test('lists all character', () => {
+    const teamSecond = new Set(arrayFromTeam);
+    arrayFromTeam.forEach((character) => teamSecond.delete(character));
+
+    expect(teamSecond.size).toBe(0);
   });
 });
